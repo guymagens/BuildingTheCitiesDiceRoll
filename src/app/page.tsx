@@ -81,7 +81,7 @@ export default function Home() {
         </div>
       </div>
       <button onClick={handleRandomize} className={styles.button} disabled={rolling}>
-        {rolling ? 'Rolling...' : 'Randomize!'}
+        {rolling ? 'Rolling...' : 'Roll!'}
       </button>
     </div>
   );
