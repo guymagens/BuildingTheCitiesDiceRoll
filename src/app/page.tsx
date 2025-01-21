@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Building The Cities</h1>
+      <h1 className={styles.title}>Building the Cities</h1>
       <div className={styles.row}>
         <div
           className={styles.colorBox}
