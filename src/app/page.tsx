@@ -27,7 +27,7 @@ const getRandomWeightedEvent = () => {
   const events = [
     { event: 'Snatch', weight: 1 },
     { event: 'Complete Takeover', weight: 1 },
-    { event: ' ', weight: 4 },
+    { event: '💨', weight: 4 },
   ];
 
   const totalWeight = events.reduce((sum, e) => sum + e.weight, 0);
@@ -38,7 +38,7 @@ const getRandomWeightedEvent = () => {
     random -= weight;
   }
 
-  return ' '; // fallback (should not happen)
+  return '💨'; // fallback (should not happen)
 };
 
 export default function Home() {
@@ -48,13 +48,23 @@ export default function Home() {
 
   const handleRandomize = () => {
     setRolling(true);
-    setTimeout(() => {
+    const rollDuration = 500; // Total rolling duration in milliseconds
+    const intervalDuration = 100; // Interval for updates
+    let elapsed = 0;
+
+    const rollingInterval = setInterval(() => {
       setColor(getRandomWeightedColor());
       setEvent(getRandomWeightedEvent());
-      setRolling(false);
-    }, 200); // Simulate a rolling effect for 200ms
-  };
+      elapsed += intervalDuration;
 
+      if (elapsed >= rollDuration) {
+        clearInterval(rollingInterval);
+        setColor(getRandomWeightedColor());
+        setEvent(getRandomWeightedEvent());
+        setRolling(false);
+      }
+    }, intervalDuration);
+  };
 
   return (
     <div className={styles.container}>
@@ -62,10 +72,12 @@ export default function Home() {
       <div className={styles.row}>
         <div
           className={styles.colorBox}
-          style={{ backgroundColor: color, transition: 'background-color 0.3s ease' }}
+          style={{ backgroundColor: color, transition: 'background-color 0.1s ease' }}
         ></div>
         <div className={styles.eventBox}>
-          <p>{rolling ? 'Rolling...' : `${event}`}</p>
+          <p style={{ transition: 'opacity 0.1s ease', opacity: rolling ? 0.5 : 1 }}>
+            {event}
+          </p>
         </div>
       </div>
       <button onClick={handleRandomize} className={styles.button} disabled={rolling}>
