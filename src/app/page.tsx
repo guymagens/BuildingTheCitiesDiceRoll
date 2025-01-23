@@ -10,6 +10,7 @@ const getRandomWeightedColor = () => {
     { color: '#c785ad', weight: 4 },
     { color: '#8de0d6', weight: 2 },
     { color: '#aeadad', weight: 4 },
+    { color: '#fbaa79', weight: 3 },
   ];
 
   const totalWeight = colors.reduce((sum, c) => sum + c.weight, 0);
