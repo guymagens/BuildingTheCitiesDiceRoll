@@ -28,7 +28,7 @@ const getRandomWeightedEvent = () => {
   const events = [
     { event: 'Snatch', weight: 1 },
     { event: 'Complete Takeover', weight: 1 },
-    { event: '💨', weight: 4 },
+    { event: ' ', weight: 4 },
   ];
 
   const totalWeight = events.reduce((sum, e) => sum + e.weight, 0);
