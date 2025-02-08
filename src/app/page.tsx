@@ -26,9 +26,10 @@ const getRandomWeightedColor = () => {
 
 const getRandomWeightedEvent = () => {
   const events = [
-    { event: 'Snatch', weight: 1 },
+    { event: 'Pick-a-Tile', weight: 1 },
     { event: 'Complete Takeover', weight: 1 },
-    { event: ' ', weight: 4 },
+    { event: 'Mall Discount', weight: 1},
+    { event: ' ', weight: 3 },
   ];
 
   const totalWeight = events.reduce((sum, e) => sum + e.weight, 0);
